@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: weather-eureka-client-zuul
+zuul:
+  routes:
+    city:
+      path: /city/**
+      serviceId: weather-city-eureka
+    data:
+      path: /data/**
+      serviceId: weather-data-eureka

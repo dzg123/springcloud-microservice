@@ -13,12 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class WeatherReportServiceImpl implements WeatherReportService{
+public class WeatherReportServiceImpl implements WeatherReportService {
     @Autowired
     private DataClient dataClient;
+
     @Override
     public Weather getDataByCityId(String cityId) {
         WeatherResponse response = dataClient.getDataByCityId(cityId);
-        return response.getData();
+        Weather data = null;
+        if (response != null) {
+            data = response.getData();
+        }
+        return data;
     }
 }

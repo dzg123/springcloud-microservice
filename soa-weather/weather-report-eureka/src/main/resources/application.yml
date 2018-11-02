@@ -2,7 +2,7 @@ spring:
   thymeleaf:
     cache: false
   application:
-      name: weather-report-eureka-feign
+      name: weather-report-eureka-feign-gateway-hystrix
 
 eureka:
   client:
@@ -10,3 +10,11 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 server:
   port: 8086
+feign:
+  client:
+    config:
+      remote-service:
+        connectTimeout: 5000
+        readTimeout: 5000
+  hystrix:
+    enabled: true
